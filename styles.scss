@@ -1,0 +1,150 @@
+$primary-color: #db2727;
+$secondary-color: #fff;
+$font: 'Ubuntu';
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $font;
+}
+
+.header {
+    background: $primary-color;
+    color: $secondary-color;
+    height: 10vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    h1 {
+        padding-top: 30px;
+        margin: 0;
+        text-align: center;
+    }
+    h3 {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    button {
+        border: 5px solid $secondary-color;
+        border-radius: 7px;
+        background: $primary-color;
+        padding: 10px 20px;
+        float: right;
+        margin-top: -45px;
+        margin-right: 55px;
+        font-size: 20px;
+        color: $secondary-color;
+    }
+    button:hover {
+        border-color: black;
+        color: black;
+    }
+    .popup {
+        height: 500px;
+        width: 500px;
+        z-index: 2;
+        float: right;
+        border: 5px solid black;
+        border-radius: 20px;
+        margin-right: -110px;
+        margin-top: 10px;
+        color: black;
+        background-color: $primary-color; 
+
+        form {
+            width: 100%;
+            height: 100%;
+            margin: 30px 0 0 30px;
+
+            input {
+                width: calc(100% - 90px);
+                padding: 10px;
+                margin: 5px 0;
+                font-size: 22px;
+                border-radius: 10px;
+                border: none;
+                
+            }
+            input[type="file"] {
+                font-size: 16px;
+                width: initial;
+            }
+            input[type="submit"] {
+                background-color: $secondary-color;
+                color: $primary-color;
+                border-radius: 10px;
+                border: none;
+                border: 3px solid black;
+                
+            }
+            textarea {
+                width: calc(100% - 88px);
+                height: calc(100% - 320px);
+                padding: 10px;
+                margin: 5px 0;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                border: none;
+                resize: none
+            }
+
+        }
+    }
+}
+
+.layout-flex {
+    margin: 0 70px 0 50px;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: calc(100vw + 10vh);
+    .item {
+        border: 5px solid $primary-color;
+        border-radius: 20px;
+        margin: 10px;
+        width: calc(33.3% - 20px);
+        .item-img {
+            width: 15%;
+            float: left;
+            img {
+                border-radius: 50%;
+                height: 75px;
+                display: block;
+                margin: 0 auto;
+                margin-top: 10px;
+            }
+        }
+        .item-text {
+            width: 85%;
+            float: right;
+            padding: 20px 0px;
+            .item-text-top {
+                padding-bottom: 10px;
+                margin-right: 20px;
+                .title {
+                    font-size: 25px;
+                }
+                .location {
+                    font-size: 17px;
+                    padding-left: 10px;
+                }
+            }
+            .item-text-img {
+                margin-right: 20px;
+                img {
+                    max-width: 100%;
+                    max-height: 50vh;
+                    height: auto;
+                }
+            }
+            .item-text-desc {
+                margin-right: 20px;
+                span {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
