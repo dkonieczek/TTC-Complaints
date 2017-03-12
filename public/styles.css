@@ -3,6 +3,10 @@ body {
   padding: 0;
   font-family: "Ubuntu"; }
 
+.show {
+  display: initial!important;
+}
+
 .header {
   background: #db2727;
   color: #fff;
@@ -32,6 +36,7 @@ body {
     border-color: black;
     color: black; }
   .header .popup {
+    display: none;
     height: 500px;
     width: 500px;
     z-index: 2;

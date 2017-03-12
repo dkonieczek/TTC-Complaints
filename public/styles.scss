@@ -1,6 +1,7 @@
 $primary-color: #db2727;
 $secondary-color: #fff;
 $font: 'Ubuntu';
+
 body {
     margin: 0;
     padding: 0;
@@ -39,7 +40,11 @@ body {
         border-color: black;
         color: black;
     }
+    .show {
+        display: initial!important;
+    }
     .popup {
+        display: none;
         height: 500px;
         width: 500px;
         z-index: 2;
