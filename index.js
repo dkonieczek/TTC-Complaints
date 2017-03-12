@@ -1,25 +1,36 @@
 const express = require('express');
 const app = express();
-
-
-
 const bodyParser = require('body-parser');
 const path = require('path');
 const port = process.env.PORT || 8080;
 const router = express.Router();
-//const formidable = require('express-formidable');
-var formidable = require('formidable');
+const crypto = require("crypto");
+const mime = require("mime");
+
+var fs = require('fs');
+var multer = require('multer')
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/')
+    },
+    filename: function (req, file, cb) {
+        crypto.pseudoRandomBytes(16, function (err, raw) {
+            cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+        });
+    }
+});
+var upload = multer({ storage: storage });
+
+var Post = require("./models/Post.js");
+
+
+
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// app.use(formidable({
-//   encoding: 'utf-8',
-//   uploadDir: path.join(__dirname, 'uploads'),
-//   multiples: false,
-// }));
-
 
 
 app.get('/', function (req, res) {
@@ -27,42 +38,36 @@ app.get('/', function (req, res) {
 });
 
 
-app.post('/submit', function (req, res) {
+app.post('/submit', upload.single('test'), function (req, res) {
 
-    var title = req.body.title;
-    var location = req.body.location;
-    var image = req.body.image;
-    var text = req.body.text;
-
-    console.log(req.files);
-    console.log(`
-                    title: ${title}
-                    location: ${location}
-                    image: ${image}
-                    text: ${text}`);
-
-    res.end("success");
-
-});
-
-app.post('/imgupload', function (req, res) {
-
-    var form = new formidable.IncomingForm(); //Receive form
-    form.parse(req, function (err, fields, files) { //Parse form and data
-        // Do form stuff, you can access the files
-        console.log("Files:" + files);
+    fs.stat('./uploads/' + req.file.filename, function (err, stats) {
+        res.sendStatus(200)
     });
 
-    // console.log(req.fields + req.files);
-    // console.log(JSON.stringify(req.fields));
-    // console.log(JSON.stringify(req.files));
-
-
-    res.end("success");
-
+    var newPost = new Post({
+        title: req.body.title,
+        location: req.body.location,
+        text: req.body.text,
+        filename: req.file.filename
+    });
+    newPost.save(function (err) {
+        if (err) throw err;
+        res.redirect("/");
+    });
 });
 
+app.get('/posts', function (req, res) {
+    Names.find({}, function (err, posts) {
+        if (err) throw err;
+        if (posts.length > 1) {
+            console.log(posts);
+        } else {
+            console.log("no data returned from DB");
+        }
+    });
 
+
+});
 
 
 app.use('/', router);

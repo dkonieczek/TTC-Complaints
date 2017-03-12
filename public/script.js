@@ -1,25 +1,35 @@
 $(document).ready(function () {
-    var title, location, text;
-    $("#submit").click(function () {
-        title = $("#title").val();
-        location = $("#location").val();
-        text = $("#text").val();
-        $.post("/submit", { title: title, location: location, text: text }, function (data) {
-            if (data === 'success') {
-                $(".popup").toggleClass("show");
-            }
-        });
-        
-        $.ajax({
-            url: '/imgupload',
-            type: 'POST',
-            data: new FormData($('#image')[0]), // The form with the file inputs.
-            processData: false                          // Using FormData, no need to process data.
-        }).done(function () {
-            console.log("Success: Files sent!");
-        }).fail(function () {
-            console.log("An error occurred, the files couldn't be sent!");
-        });
+    $("#submit").click(function () {      
+        // $.post("/submit", { title: title, location: location, text: text }, function (data) {
+        //     if (data === 'success') {
+        //         $(".popup").toggleClass("show");
+        //     }
+        // });
+
+        'use strict'
+        let aFile = new FormData();
+        aFile.append('test', document.querySelector('#image').files[0]);
+        aFile.append("title", $("#title").val());
+        aFile.append("location", $("#location").val());
+        aFile.append("text", $("#text").val());
+
+        let sendFile = new XMLHttpRequest();
+        sendFile.open('POST', '/submit', 1);
+        sendFile.send(aFile);
+        sendFile.onreadystatechange = function (data) {
+            console.log(data);
+            if (sendFile.readyState === 4) {
+                if (sendFile.status === 200) {
+                    $(".popup").toggleClass("show");
+                    //alert("success img uploaded");
+                } else {
+                    alert('Error: ' + sendFile.status);
+                }
+            };
+        }
+
+
+
     });
 
     $("#newPost").click(function () {
