@@ -3,10 +3,6 @@ body {
   padding: 0;
   font-family: "Ubuntu"; }
 
-.show {
-  display: initial!important;
-}
-
 .header {
   background: #db2727;
   color: #fff;
@@ -35,6 +31,8 @@ body {
   .header button:hover {
     border-color: black;
     color: black; }
+  .header .show {
+    display: initial !important; }
   .header .popup {
     display: none;
     height: 500px;
@@ -90,36 +88,26 @@ body {
     border-radius: 20px;
     margin: 10px;
     width: calc(33.3% - 20px); }
-    .layout-flex .item .item-img {
-      width: 15%;
-      float: left; }
-      .layout-flex .item .item-img img {
-        border-radius: 50%;
-        height: 75px;
-        display: block;
-        margin: 0 auto;
-        margin-top: 10px; }
-    .layout-flex .item .item-text {
-      width: 85%;
-      float: right;
-      padding: 20px 0px; }
-      .layout-flex .item .item-text .item-text-top {
-        padding-bottom: 10px;
-        margin-right: 20px; }
-        .layout-flex .item .item-text .item-text-top .title {
-          font-size: 25px; }
-        .layout-flex .item .item-text .item-text-top .location {
-          font-size: 17px;
-          padding-left: 10px; }
-      .layout-flex .item .item-text .item-text-img {
-        margin-right: 20px; }
-        .layout-flex .item .item-text .item-text-img img {
-          max-width: 100%;
-          max-height: 50vh;
-          height: auto; }
-      .layout-flex .item .item-text .item-text-desc {
-        margin-right: 20px; }
-        .layout-flex .item .item-text .item-text-desc span {
-          font-size: 20px; }
+    .layout-flex .item .item-text-top {
+      width: 100%;
+      float: left;
+      padding: 20px; }
+      .layout-flex .item .item-text-top .title {
+        font-size: 25px; }
+      .layout-flex .item .item-text-top .location {
+        font-size: 17px;
+        padding-left: 10px; }
+      .layout-flex .item .item-text-top .author {
+        float: right; }
+    .layout-flex .item .item-text-img {
+      margin: 0px 20px; }
+      .layout-flex .item .item-text-img img {
+        max-width: 100%;
+        max-height: 50vh;
+        height: auto; }
+    .layout-flex .item .item-text-desc {
+      margin: 20px; }
+      .layout-flex .item .item-text-desc span {
+        font-size: 20px; }
 
 /*# sourceMappingURL=styles.css.map */

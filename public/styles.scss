@@ -1,7 +1,6 @@
 $primary-color: #db2727;
 $secondary-color: #fff;
 $font: 'Ubuntu';
-
 body {
     margin: 0;
     padding: 0;
@@ -54,13 +53,11 @@ body {
         margin-right: -110px;
         margin-top: 10px;
         color: black;
-        background-color: $primary-color; 
-
+        background-color: $primary-color;
         form {
             width: 100%;
             height: 100%;
             margin: 30px 0 0 30px;
-
             input {
                 width: calc(100% - 90px);
                 padding: 10px;
@@ -68,7 +65,6 @@ body {
                 font-size: 22px;
                 border-radius: 10px;
                 border: none;
-                
             }
             input[type="file"] {
                 font-size: 16px;
@@ -80,7 +76,6 @@ body {
                 border-radius: 10px;
                 border: none;
                 border: 3px solid black;
-                
             }
             textarea {
                 width: calc(100% - 88px);
@@ -93,7 +88,6 @@ body {
                 border: none;
                 resize: none
             }
-
         }
     }
 }
@@ -110,45 +104,33 @@ body {
         border-radius: 20px;
         margin: 10px;
         width: calc(33.3% - 20px);
-        .item-img {
-            width: 15%;
+        .item-text-top {
+            width: 100%;
             float: left;
-            img {
-                border-radius: 50%;
-                height: 75px;
-                display: block;
-                margin: 0 auto;
-                margin-top: 10px;
+            padding: 20px;
+            .title {
+                font-size: 25px;
+            }
+            .location {
+                font-size: 17px;
+                padding-left: 10px;
+            }
+            .author {
+                float: right;
             }
         }
-        .item-text {
-            width: 85%;
-            float: right;
-            padding: 20px 0px;
-            .item-text-top {
-                padding-bottom: 10px;
-                margin-right: 20px;
-                .title {
-                    font-size: 25px;
-                }
-                .location {
-                    font-size: 17px;
-                    padding-left: 10px;
-                }
+        .item-text-img {
+            margin: 0px 20px;
+            img {
+                max-width: 100%;
+                max-height: 50vh;
+                height: auto;
             }
-            .item-text-img {
-                margin-right: 20px;
-                img {
-                    max-width: 100%;
-                    max-height: 50vh;
-                    height: auto;
-                }
-            }
-            .item-text-desc {
-                margin-right: 20px;
-                span {
-                    font-size: 20px;
-                }
+        }
+        .item-text-desc {
+            margin: 20px;
+            span {
+                font-size: 20px;
             }
         }
     }

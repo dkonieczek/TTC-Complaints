@@ -41,14 +41,16 @@ app.get('/', function (req, res) {
 app.post('/submit', upload.single('test'), function (req, res) {
 
     fs.stat('./uploads/' + req.file.filename, function (err, stats) {
-        res.sendStatus(200)
+        if (err) throw err;
+        
     });
 
     var newPost = new Post({
         title: req.body.title,
         location: req.body.location,
+        imagePath: req.file.filename,
         text: req.body.text,
-        filename: req.file.filename
+        time: new Date()
     });
     newPost.save(function (err) {
         if (err) throw err;
@@ -56,17 +58,15 @@ app.post('/submit', upload.single('test'), function (req, res) {
     });
 });
 
+const NUMOFPOSTS = 2;
+const SORTNEWEST = {_id:-1};
 app.get('/posts', function (req, res) {
-    Names.find({}, function (err, posts) {
-        if (err) throw err;
-        if (posts.length > 1) {
-            console.log(posts);
-        } else {
-            console.log("no data returned from DB");
-        }
+    Post.find().sort(SORTNEWEST).limit(NUMOFPOSTS).exec(function(err, results) {
+        res.send(results);
+        results.forEach(function(item){
+            console.log(item);
+        });
     });
-
-
 });
 
 

@@ -1,11 +1,20 @@
 $(document).ready(function () {
-    $("#submit").click(function () {      
-        // $.post("/submit", { title: title, location: location, text: text }, function (data) {
-        //     if (data === 'success') {
-        //         $(".popup").toggleClass("show");
-        //     }
-        // });
 
+    fetch('/posts')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            data.forEach(function (element) {
+                console.log(element)
+            });
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+
+    $("#submit").click(function () {
         'use strict'
         let aFile = new FormData();
         aFile.append('test', document.querySelector('#image').files[0]);
@@ -27,9 +36,6 @@ $(document).ready(function () {
                 }
             };
         }
-
-
-
     });
 
     $("#newPost").click(function () {
