@@ -56,7 +56,7 @@ app.post('/submit', upload.single('test'), function (req, res) {
     });
 });
 
-const NUMOFPOSTS = 2;
+const NUMOFPOSTS = 20;
 const SORTNEWEST = {_id:-1};
 app.get('/posts', function (req, res) {
     Post.find().sort(SORTNEWEST).limit(NUMOFPOSTS).exec(function(err, results) {
