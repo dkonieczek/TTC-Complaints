@@ -26,8 +26,6 @@ var Post = require("./models/Post.js");
 
 
 
-
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -40,15 +38,15 @@ app.get('/', function (req, res) {
 
 app.post('/submit', upload.single('test'), function (req, res) {
 
-    fs.stat('./uploads/' + req.file.filename, function (err, stats) {
-        if (err) throw err;
+    //fs.stat('./uploads/' + req.file.filename, function (err, stats) {
+      //  if (err) throw err;
         
-    });
+    //});
 
     var newPost = new Post({
         title: req.body.title,
         location: req.body.location,
-        imagePath: req.file.filename,
+        //imagePath: req.file.filename,
         text: req.body.text,
         time: new Date()
     });
@@ -68,7 +66,6 @@ app.get('/posts', function (req, res) {
         });
     });
 });
-
 
 app.use('/', router);
 app.listen(port);

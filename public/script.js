@@ -5,9 +5,20 @@ $(document).ready(function () {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             data.forEach(function (element) {
-                console.log(element)
+                console.log(element);
+                let item = `
+                <div class="item">
+                    <div class="item-text-top">
+                        <span class="title">${element.title}</span>
+                        <span class="location">${element.location}</span>
+                    </div>
+                    <div class="item-text-desc">
+                        <span>${element.text}</span>
+                    </div>
+                </div>`;
+
+                $('#item-list').append(item);
             });
         })
         .catch(function (err) {
