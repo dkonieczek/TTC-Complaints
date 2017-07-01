@@ -1,3 +1,47 @@
+$font: 'Ubuntu';
+$verticleMargin: 10%;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $font;
+}
+
+.header {
+    height: 60px;
+    box-shadow: 0px 0px 10px 0px rgba(100, 100, 100, 0.7);
+    .site-name {
+        float: left;
+        margin-left: $verticleMargin;
+        margin-top: 10px;
+        h1 {
+            color: #000;
+            margin: 0;
+        }
+    }
+    .site-info {
+        float: right;
+        margin-right: $verticleMargin;
+        font-size: 1.2em;
+        .nav {
+            list-style: none;
+            li {
+                display: inline;
+                margin-left: 10px;
+                a {
+                    color: #000;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+.main-content {
+    background: #eee;
+    height: 1000px;
+}
+
+
+/*
 $primary-color: #db2727;
 $secondary-color: #fff;
 $font: 'Ubuntu';
@@ -136,3 +180,4 @@ body {
         }
     }
 }
+*/

@@ -4,111 +4,171 @@ body {
   font-family: "Ubuntu"; }
 
 .header {
-  background: #db2727;
-  color: #fff;
-  box-shadow: 0px 0px 20px 0px #666;
-  height: 10vh;
-  width: 100%;
-  position: fixed;
-  top: 0; }
-  .header h1 {
-    padding-top: 30px;
+  height: 60px;
+  box-shadow: 0px 0px 10px 0px rgba(100, 100, 100, 0.7); }
+  .header .site-name {
+    float: left;
+    margin-left: 10%;
+    margin-top: 10px; }
+    .header .site-name h1 {
+      color: #000;
+      margin: 0; }
+  .header .site-info {
+    float: right;
+    margin-right: 10%;
+    font-size: 1.2em; }
+    .header .site-info .nav {
+      list-style: none; }
+      .header .site-info .nav li {
+        display: inline;
+        margin-left: 10px; }
+        .header .site-info .nav li a {
+          color: #000;
+          text-decoration: none; }
+
+.main-content {
+  background: #eee;
+  height: 1000px; }
+
+/*
+$primary-color: #db2727;
+$secondary-color: #fff;
+$font: 'Ubuntu';
+body {
     margin: 0;
-    text-align: center; }
-  .header h3 {
     padding: 0;
-    margin: 0;
-    text-align: center; }
-  .header button {
-    border: 5px solid #fff;
-    border-radius: 7px;
-    background: #db2727;
-    padding: 10px 20px;
-    float: right;
-    margin-top: -60px;
-    margin-right: 55px;
-    font-size: 20px;
-    color: #fff; }
-  .header button:hover {
-    border-color: black;
-    color: black; }
-  .header .show {
-    display: initial !important; }
-  .header .popup {
-    display: none;
-    height: 500px;
-    width: 500px;
-    z-index: 2;
-    float: right;
-    border: 5px solid black;
-    border-radius: 20px;
-    margin-right: 50px;
-    color: black;
-    background-color: #db2727; }
-    .header .popup form {
-      width: 100%;
-      height: 100%;
-      margin: 30px 0 0 30px; }
-      .header .popup form input {
-        width: calc(100% - 90px);
-        padding: 10px;
-        margin: 5px 0;
-        font-size: 22px;
-        border-radius: 10px;
-        border: none; }
-      .header .popup form input[type="file"] {
-        font-size: 16px;
-        width: initial; }
-      .header .popup form input[type="submit"] {
-        background-color: #fff;
-        color: #db2727;
-        border-radius: 10px;
-        border: none;
-        border: 3px solid black; }
-      .header .popup form textarea {
-        width: calc(100% - 88px);
-        height: calc(100% - 320px);
-        padding: 10px;
-        margin: 5px 0;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        border: none;
-        resize: none; }
+    font-family: $font;
+}
+
+.header {
+    background: $primary-color;
+    color: $secondary-color;
+    box-shadow: 0px 0px 20px 0px #666;
+    height: 10vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    h1 {
+        padding-top: 30px;
+        margin: 0;
+        text-align: center;
+    }
+    h3 {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    button {
+        border: 5px solid $secondary-color;
+        border-radius: 7px;
+        background: $primary-color;
+        padding: 10px 20px;
+        float: right;
+        margin-top: -60px;
+        margin-right: 55px;
+        font-size: 20px;
+        color: $secondary-color;
+    }
+    button:hover {
+        border-color: black;
+        color: black;
+    }
+    .show {
+        display: initial!important;
+    }
+    .popup {
+        display: none;
+        height: 500px;
+        width: 500px;
+        z-index: 2;
+        float: right;
+        border: 5px solid black;
+        border-radius: 20px;
+        margin-right: 50px;
+        color: black;
+        background-color: $primary-color;
+        form {
+            width: 100%;
+            height: 100%;
+            margin: 30px 0 0 30px;
+            input {
+                width: calc(100% - 90px);
+                padding: 10px;
+                margin: 5px 0;
+                font-size: 22px;
+                border-radius: 10px;
+                border: none;
+            }
+            input[type="file"] {
+                font-size: 16px;
+                width: initial;
+            }
+            input[type="submit"] {
+                background-color: $secondary-color;
+                color: $primary-color;
+                border-radius: 10px;
+                border: none;
+                border: 3px solid black;
+            }
+            textarea {
+                width: calc(100% - 88px);
+                height: calc(100% - 320px);
+                padding: 10px;
+                margin: 5px 0;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                border: none;
+                resize: none
+            }
+        }
+    }
+}
 
 .layout-flex {
-  margin: 0 70px 0 50px;
-  margin-top: 10vh;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: calc(100vw + 10vh); }
-  .layout-flex .item {
-    border: 5px solid #db2727;
-    border-radius: 20px;
-    margin: 10px;
-    width: calc(33.3% - 20px);
-    box-shadow: 2px 2px 20px 0px #ccc; }
-    .layout-flex .item .item-text-top {
-      width: 100%;
-      float: left;
-      padding: 20px; }
-      .layout-flex .item .item-text-top .title {
-        font-size: 25px; }
-      .layout-flex .item .item-text-top .location {
-        font-size: 17px;
-        padding-left: 10px; }
-      .layout-flex .item .item-text-top .author {
-        float: right; }
-    .layout-flex .item .item-text-img {
-      margin: 0px 20px; }
-      .layout-flex .item .item-text-img img {
-        max-width: 100%;
-        max-height: 50vh;
-        height: auto; }
-    .layout-flex .item .item-text-desc {
-      margin: 20px; }
-      .layout-flex .item .item-text-desc span {
-        font-size: 20px; }
+    margin: 0 70px 0 50px;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: calc(100vw + 10vh);
+    .item {
+        border: 5px solid $primary-color;
+        border-radius: 20px;
+        margin: 10px;
+        width: calc(33.3% - 20px);
+        box-shadow: 2px 2px 20px 0px #ccc;
+        .item-text-top {
+            width: 100%;
+            float: left;
+            padding: 20px;
+            .title {
+                font-size: 25px;
+            }
+            .location {
+                font-size: 17px;
+                padding-left: 10px;
+            }
+            .author {
+                float: right;
+            }
+        }
+        .item-text-img {
+            margin: 0px 20px;
+            img {
+                max-width: 100%;
+                max-height: 50vh;
+                height: auto;
+            }
+        }
+        .item-text-desc {
+            margin: 20px;
+            span {
+                font-size: 20px;
+            }
+        }
+    }
+}
+*/
 
 /*# sourceMappingURL=styles.css.map */
