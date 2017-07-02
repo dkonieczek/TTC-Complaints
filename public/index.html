@@ -9,37 +9,154 @@
     <link href="styles.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
-        <script src="script.js"></script>
+    <script src="script.js"></script>
+    <style>
+        /*
+    body :not(#unblurred), body :not(#unblurred) * {
+        -webkit-filter: blur(2px);
+        filter: blur(2px);    
+    }
+    */
+    </style>
 </head>
 
 <body>
-    <div id="container">
-        <div class="header">
-            <h1>TTC Comaplaints</h1>
-            <button id="newPost">Submit</button>
-            <div class="popup">
-                <form>
-                    <input id="title" type="text" placeholder="Title"></input>
-                    <input id="location" type="text" placeholder="Location"></input>
-                    <textarea id="text" type="text" placeholder="Text"></textarea>
-                    <input id="image" type="file" name="test" accept="image/gif, image/jpeg, image/png"></input>
-                    <input id="submit" type="submit" value="Submit">
-                </form>
-            </div>
+
+    <div class="header">
+        <div class="site-name">
+            <h1>TTC Complaints</h1>
         </div>
-        <div id="item-list" class="layout-flex">
-            <!-- items appened in here -->
+        <div class="site-info">
+            <ul class="nav">
+                <li><a href="#">Submit</a></li>
+                <li><a href="info.html">About</a></li>
+                <li><a href="https://github.com/dkonieczek/TTC-Complaints">Source Code</a></li>
+            </ul>
+        </div>
+        
+    </div>
+    <div class="wrapper">
+        <div class="main-content">
+            <div class="item">
+                <div class="item-top">
+                    <div class="title"><span>This the the title the the title</span></div>
+                    <div class="location"><span>Toronto, ON</span></div>
+                </div>
+                <div class="item-bottom">
+                    <div class="description">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit eleifend feugiat. Cras vel eros consectetur, aliquam felis vel, cursus dui.</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-top">
+                    <div class="title"><span>This the the title the the title</span></div>
+                    <div class="location"><span>Toronto, ON</span></div>
+                </div>
+                <div class="item-bottom">
+                    <img class="image" src="streetcar.jpg" />
+                    <div class="description">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit eleifend feugiat. Cras vel eros consectetur, aliquam felis vel, cursus dui.</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-top">
+                    <div class="title"><span>This the the title the the title</span></div>
+                    <div class="location"><span>Toronto, ON</span></div>
+                </div>
+                <div class="item-bottom">
+                    <img class="image" src="cntower.jpg" />
+                    <div class="description">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit eleifend feugiat. Cras vel eros consectetur, aliquam felis vel, cursus dui.</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-top">
+                    <div class="title"><span>This the the title the the title</span></div>
+                    <div class="location"><span>Toronto, ON</span></div>
+                </div>
+                <div class="item-bottom">
+                    <div class="description">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit eleifend feugiat. Cras vel eros consectetur, aliquam felis vel, cursus dui.</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-top">
+                    <div class="title"><span>This the the title the the title</span></div>
+                    <div class="location"><span>Toronto, ON</span></div>
+                </div>
+                <div class="item-bottom">
+                    <img class="image" src="streetcar.jpg" />
+                    <div class="description">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit eleifend feugiat. Cras vel eros consectetur, aliquam felis vel, cursus dui.</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-top">
+                    <div class="title"><span>This the the title the the title</span></div>
+                    <div class="location"><span>Toronto, ON</span></div>
+                </div>
+                <div class="item-bottom">
+                    <div class="description">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit eleifend feugiat. Cras vel eros consectetur, aliquam felis vel, cursus dui.</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-top">
+                    <div class="title"><span>This the the title the the title</span></div>
+                    <div class="location"><span>Toronto, ON</span></div>
+                </div>
+                <div class="item-bottom">
+                    <div class="description">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit eleifend feugiat. Cras vel eros consectetur, aliquam felis vel, cursus dui.</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-top">
+                    <div class="title"><span>This the the title the the title</span></div>
+                    <div class="location"><span>Toronto, ON</span></div>
+                </div>
+                <div class="item-bottom">
+                    <img class="image" src="streetcar.jpg" />
+                    <div class="description">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit eleifend feugiat. Cras vel eros consectetur, aliquam felis vel, cursus dui.</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-top">
+                    <div class="title"><span>This the the title the the title</span></div>
+                    <div class="location"><span>Toronto, ON</span></div>
+                </div>
+                <div class="item-bottom">
+                    <img class="image" src="cntower.jpg" />
+                    <div class="description">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit eleifend feugiat. Cras vel eros consectetur, aliquam felis vel, cursus dui.</span>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            
         </div>
     </div>
-    <script>
-        var totalHeight = 0;
-        Array.prototype.slice.call(document.querySelectorAll(".item")).forEach(function (item) {
-            totalHeight += item.offsetHeight;
-        });
-        console.log(totalHeight);
 
-        document.querySelector(".layout-flex").setAttribute("style", "height:" + (totalHeight / 2.1) + "px");
-    </script>
 </body>
 
 </html>

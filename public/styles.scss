@@ -1,3 +1,103 @@
+$font: 'Ubuntu';
+$verticleMargin: 10%;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $font;
+}
+
+.header {
+    height: 60px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+    position: fixed;
+    display: block;
+    width: 100%;
+    background: white;
+    top: 0;
+    .site-name {
+        float: left;
+        margin-left: $verticleMargin;
+        margin-top: 10px;
+        h1 {
+            color: #000;
+            margin: 0;
+        }
+    }
+    .site-info {
+        float: right;
+        margin-right: $verticleMargin;
+        font-size: 1.2em;
+        .nav {
+            list-style: none;
+            li {
+                display: inline;
+                margin-left: 15px;
+                a {
+                    color: #000;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.wrapper {
+    padding: 0 5%;
+}
+
+.main-content {
+
+    margin-top: 70px;
+    display: -ms-flexbox;
+	-ms-flex-direction: column;
+	-ms-flex-wrap: wrap;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 100vw;
+    width: 100%;
+
+    .item {
+       width: calc(33.3% - 20px);
+        margin-bottom: 20px;
+        box-shadow: 2px 2px 5px 2px rgba(170, 170, 170, 0.7);
+        
+
+        .item-top {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            margin-left: 30px;
+            margin-right: 30px;
+            .title {
+                font-size: 1.2em;
+            }
+            .location {
+                font-size: 1em;
+                float: right;
+            }
+        }
+        .item-bottom {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-bottom: 20px;
+            .image {                
+                max-width: 100%;
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+}
+
+
+/*
 $primary-color: #db2727;
 $secondary-color: #fff;
 $font: 'Ubuntu';
@@ -136,3 +236,4 @@ body {
         }
     }
 }
+*/
