@@ -52,14 +52,26 @@ $(document).ready(function () {
         }
     });
 
-    $("#newPost").click(function () {
-        $(".popup").addClass("show");
+    $(".submit-btn").click(function () {
+        $(".popup-wrapper").removeClass("hide");
+        $(".blur-wrapper").addClass("blur");
     });
 
+    
     $(document).click(function (e) {
-        if (!e.target.classList.contains('popup') && e.target.id != 'newPost' && e.target.id != 'title' && e.target.id != 'location' && e.target.id != 'image' && e.target.id != 'text' && e.target.id != 'submit') {
-            $(".popup").removeClass("show");
-        }
+        if (e.target.id != 'newPost' && 
+            e.target.id != 'title' && 
+            e.target.id != 'location' && 
+            e.target.id != 'image' && 
+            e.target.id != 'text' && 
+            e.target.id != 'submit' &&
+            e.target.classList != 'submit-btn' &&
+            e.target.classList != 'popup' &&
+            e.target.classList != 'form-submit' && 
+            e.target.classList != 'popup-name') {
+                $(".popup-wrapper").addClass("hide");
+                $(".blur-wrapper").removeClass("blur");
+    }
     });
-
+    
 });
