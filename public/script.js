@@ -5,20 +5,23 @@ $(document).ready(function () {
             return response.json();
         })
         .then(function (data) {
-            data.forEach(function (element) {
-                console.log(element);
+            data.forEach(function (post) {
+                console.log(post);
                 let item = `
-                <div class="item">
-                    <div class="item-text-top">
-                        <span class="title">${element.title}</span>
-                        <span class="location">${element.location}</span>
-                    </div>
-                    <div class="item-text-desc">
-                        <span>${element.text}</span>
-                    </div>
-                </div>`;
+                    <div class="item">
+                        <div class="item-top">
+                            <div class="title"><span>${post.title}</span></div>
+                            <div class="location"><span>${post.location}</span></div>
+                        </div>
+                        <div class="item-bottom">
+                            <div class="description">
+                                <span>${post.text}</span>
+                            </div>
 
-                $('#item-list').append(item);
+                        </div>
+                    </div>`;
+
+                //$('.main-content').prepend(item);
             });
         })
         .catch(function (err) {
