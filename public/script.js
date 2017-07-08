@@ -1,33 +1,6 @@
 $(document).ready(function () {
 
-    fetch('/posts')
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            data.forEach(function (post) {
-                console.log(post);
-                let item = `
-                    <div class="item">
-                        <div class="item-top">
-                            <div class="title"><span>${post.title}</span></div>
-                            <div class="location"><span>${post.location}</span></div>
-                        </div>
-                        <div class="item-bottom">
-                            <div class="description">
-                                <span>${post.text}</span>
-                            </div>
-
-                        </div>
-                    </div>`;
-
-                //$('.main-content').prepend(item);
-            });
-        })
-        .catch(function (err) {
-            console.log(err);
-        });
-
+    /** POST a new post */
     $("#submit").click(function () {
         'use strict'
         let aFile = new FormData();
@@ -52,12 +25,13 @@ $(document).ready(function () {
         }
     });
 
+    /** Display popup when 'Submit' button within header is clicked */
     $(".submit-btn").click(function () {
         $(".popup-wrapper").removeClass("hide");
         $(".blur-wrapper").addClass("blur");
     });
 
-    
+    /** Hide submit popup when clicked anywhere outside the popup */
     $(document).click(function (e) {
         if (e.target.id != 'newPost' && 
             e.target.id != 'title' && 
@@ -71,7 +45,7 @@ $(document).ready(function () {
             e.target.classList != 'popup-name') {
                 $(".popup-wrapper").addClass("hide");
                 $(".blur-wrapper").removeClass("blur");
-    }
+            }
     });
     
 });
