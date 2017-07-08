@@ -1,5 +1,5 @@
 /node_modules
-/uploads
+/public/uploads/*
 /data
 notes.txt
 /.git
