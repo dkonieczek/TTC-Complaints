@@ -56,36 +56,32 @@ app.get('/', function (req, res) {
 
 })
 
-app.post('/submit', upload.single('test'), function (req, res) {
+app.post('/submit', upload.single('filename'), function (req, res) {
 
-    fs.stat('./public/uploads/' + req.file.filename, function (err, stats) {  
-        if (err) { throw err; } 
-    });
+    let newPost;
 
-    var newPost = new Post({
-        title: req.body.title, location: req.body.location,
-        imagePath: req.file.filename,
-        text: req.body.text,
-        time: new Date()
-    });
-    newPost.save(function (err) {
-        if (err) 
-            throw err;
-        res.redirect("/");
-    });
-});
-
-app.get('/posts', function (req, res) {
-    Post
-        .find()
-        .sort(SORTNEWEST)
-        .limit(NUMOFPOSTS)
-        .exec(function (err, results) {
-            res.send(results);
-            results.forEach(function (item) {
-                //console.log(item);
-            });
+    if(req.file) {
+        fs.stat('./public/uploads/' + req.file.filename, function (err, stats) {  
+            if (err) { throw err; } 
         });
+        newPost = new Post({
+            title: req.body.title, location: req.body.location,
+            imagePath: req.file.filename,
+            text: req.body.text,
+            time: new Date()
+        });
+    } else {
+        newPost = new Post({
+            title: req.body.title, location: req.body.location,
+            text: req.body.text,
+            time: new Date()
+        });
+    }
+
+    newPost.save(function (err) {
+        if (err) { throw err; }
+        res.sendStatus(200);
+    });
 });
 
 app.use('/', router);

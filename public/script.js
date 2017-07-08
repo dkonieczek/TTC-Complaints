@@ -4,7 +4,7 @@ $(document).ready(function () {
     $("#submit").click(function () {
         'use strict'
         let aFile = new FormData();
-        aFile.append('test', document.querySelector('#image').files[0]);
+        aFile.append('filename', document.querySelector('#image').files[0]);
         aFile.append("title", $("#title").val());
         aFile.append("location", $("#location").val());
         aFile.append("text", $("#text").val());
@@ -13,13 +13,11 @@ $(document).ready(function () {
         sendFile.open('POST', '/submit', 1);
         sendFile.send(aFile);
         sendFile.onreadystatechange = function (data) {
-            console.log(data);
             if (sendFile.readyState === 4) {
                 if (sendFile.status === 200) {
-                    $(".popup").toggleClass("show");
-                    //alert("success img uploaded");
+                    location.reload();
                 } else {
-                    alert('Error: ' + sendFile.status);
+                    console.log('Error: ' + sendFile.status);
                 }
             };
         }
