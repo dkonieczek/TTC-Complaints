@@ -12,7 +12,7 @@ var multer = require('multer')
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads/')
+        cb(null, './public/uploads/')
     },
     filename: function (req, file, cb) {
         crypto
@@ -46,7 +46,7 @@ app.get('/', function (req, res) {
         .limit(NUMOFPOSTS)
         .exec(function (err, results) {
             const posts = results.map(function (item) {
-                return {"title": item.title, "location": item.location, "text": item.text}
+                return {"title": item.title, "location": item.location, "text": item.text, "image": "/uploads/"+item.imagePath}
             });
             res.render('index', {
                 title: title,
@@ -58,12 +58,13 @@ app.get('/', function (req, res) {
 
 app.post('/submit', upload.single('test'), function (req, res) {
 
-    // fs.stat('./uploads/' + req.file.filename, function (err, stats) {  if (err)
-    // throw err; });
+    fs.stat('./public/uploads/' + req.file.filename, function (err, stats) {  
+        if (err) { throw err; } 
+    });
 
     var newPost = new Post({
         title: req.body.title, location: req.body.location,
-        //imagePath: req.file.filename,
+        imagePath: req.file.filename,
         text: req.body.text,
         time: new Date()
     });
