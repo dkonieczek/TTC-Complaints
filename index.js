@@ -15,56 +15,76 @@ var storage = multer.diskStorage({
         cb(null, './uploads/')
     },
     filename: function (req, file, cb) {
-        crypto.pseudoRandomBytes(16, function (err, raw) {
-            cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
-        });
+        crypto
+            .pseudoRandomBytes(16, function (err, raw) {
+                cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+            });
     }
 });
-var upload = multer({ storage: storage });
+var upload = multer({storage: storage});
 
 var Post = require("./models/Post.js");
 
+app.set('view engine', 'pug')
 
-
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// app.get('/', function (req, res) {     res.sendFile('index.html'); });
+const NUMOFPOSTS = 20;
+const SORTNEWEST = {
+    _id: -1
+};
+
+const title = 'TTC Complaints'
 
 app.get('/', function (req, res) {
-    res.sendFile('index.html');
-});
 
+    Post.find()
+        .sort(SORTNEWEST)
+        .limit(NUMOFPOSTS)
+        .exec(function (err, results) {
+            const posts = results.map(function (item) {
+                return {"title": item.title, "location": item.location, "text": item.text}
+            });
+            res.render('index', {
+                title: title,
+                posts: posts
+            })
+        });
+
+})
 
 app.post('/submit', upload.single('test'), function (req, res) {
 
-    //fs.stat('./uploads/' + req.file.filename, function (err, stats) {
-      //  if (err) throw err;
-        
-    //});
+    // fs.stat('./uploads/' + req.file.filename, function (err, stats) {  if (err)
+    // throw err; });
 
     var newPost = new Post({
-        title: req.body.title,
-        location: req.body.location,
+        title: req.body.title, location: req.body.location,
         //imagePath: req.file.filename,
         text: req.body.text,
         time: new Date()
     });
     newPost.save(function (err) {
-        if (err) throw err;
+        if (err) 
+            throw err;
         res.redirect("/");
     });
 });
 
-const NUMOFPOSTS = 20;
-const SORTNEWEST = {_id:-1};
 app.get('/posts', function (req, res) {
-    Post.find().sort(SORTNEWEST).limit(NUMOFPOSTS).exec(function(err, results) {
-        res.send(results);
-        results.forEach(function(item){
-            console.log(item);
+    Post
+        .find()
+        .sort(SORTNEWEST)
+        .limit(NUMOFPOSTS)
+        .exec(function (err, results) {
+            res.send(results);
+            results.forEach(function (item) {
+                //console.log(item);
+            });
         });
-    });
 });
 
 app.use('/', router);

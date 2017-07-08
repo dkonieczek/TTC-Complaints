@@ -1,0 +1,46 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(href='http://fonts.googleapis.com/css?family=Ubuntu', rel='stylesheet')
+    link(href='styles.css', rel='stylesheet')
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js', integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=', crossorigin='anonymous')
+    script(src='script.js')
+
+  body
+    .popup-wrapper.hide
+      .popup
+        .popup-name Got something to share?
+        form.form-submit
+          input#title(required='', type='text', placeholder='Title')
+          input#location(type='text', placeholder='Location (optional)')
+          textarea#text(required='', type='text', placeholder='Text')
+          input#image(type='file', name='test', accept='image/gif, image/jpeg, image/png')
+          input#submit(type='submit', value='Submit')
+    .blur-wrapper
+      .header
+        .site-name
+          h1= title
+        .site-info
+          ul.nav
+            li
+              a.submit-btn(href='#') Submit
+            li
+              a(href='info.html') About
+            li
+              a(href='https://github.com/dkonieczek/TTC-Complaints') Source Code
+      .wrapper
+        .main-content
+        
+          each post in posts
+            .item
+              .item-top
+                .title
+                  span= post.title
+                .location
+                  span= post.location
+              .item-bottom
+                .description
+                  span= post.text
