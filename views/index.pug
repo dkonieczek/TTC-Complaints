@@ -42,6 +42,7 @@ html(lang='en')
                 .location
                   span= post.location
               .item-bottom
-                img.image(src=post.image)
+                if post.image
+                  img.image(src=post.image)
                 .description
                   span= post.text

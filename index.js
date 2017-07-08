@@ -46,7 +46,21 @@ app.get('/', function (req, res) {
         .limit(NUMOFPOSTS)
         .exec(function (err, results) {
             const posts = results.map(function (item) {
-                return {"title": item.title, "location": item.location, "text": item.text, "image": "/uploads/"+item.imagePath}
+
+                if (item.imagePath) {
+                    return { 
+                        "title": item.title, 
+                        "location": item.location, 
+                        "text": item.text, 
+                        "image": "/uploads/" + item.imagePath }
+                } else {
+                    return { 
+                        "title": item.title, 
+                        "location": item.location, 
+                        "text": item.text }
+                }
+
+                
             });
             res.render('index', {
                 title: title,
